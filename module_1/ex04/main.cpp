@@ -6,11 +6,10 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:30:29 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/07 16:51:18 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/07 17:11:03 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -42,21 +41,21 @@ int	main(int argc, char **argv)
 	if (argc != 4)
 	{
 		std::cerr << red << "Please enter only three parameters in the following order: a filename and two strings" << reset << std::endl;
-		return (EXIT_FAILURE);
+		return (1);
 	}
 	
 	std::ifstream	ifs(argv[1], std::ifstream::in);
 	if (!ifs.is_open())
 	{
 		std::cerr << "Could not open " << argv[1] << std::endl;
-		return (EXIT_FAILURE);
+		return (1);
 	}
 	
 	if (!std::getline(ifs, lines, '\0'))
 	{
 		ifs.close();
 		std::cout << red << "Getline function error" << reset << std::endl;
-		return (EXIT_FAILURE);
+		return (1);
 	}
 	else
 	{
@@ -71,5 +70,5 @@ int	main(int argc, char **argv)
 		ofs.close();
 	}
 	
-	return (EXIT_SUCCESS);
+	return (0);
 }
