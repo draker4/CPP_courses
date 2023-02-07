@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:06:48 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/06 13:37:07 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/07 10:14:24 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ class PhoneBook
 {
 	private:
 
-		Contact	contact[8];
+		Contact	_contact[8];
+		int		_read_index(void) const;
+		int		_nb_contacts;
 
 	public:
 
@@ -28,6 +30,7 @@ class PhoneBook
 	
 		void	begin(void);
 		void	add(void);
+		void	search(void) const;
 };
 
 #endif

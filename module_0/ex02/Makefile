@@ -1,0 +1,114 @@
+# **********************  MINISHELL MAKEFILE  ********************** #
+
+.PHONY			:	all clean fclean re debug run runl runs rund
+
+# **************************  VARIABLES  *************************** #
+
+# ---  Final Executable  --- #
+
+NAME			=	account
+DEBUG			=	account_debug
+
+# ----------  Directories  ----------- #
+
+DIR_HEAD		=	./
+DIR_SRCS		=	./
+DIR_OBJS		=	.build/
+DIR_OBJS_D		=	.build_debug/
+
+# -------------  Files  -------------- #
+
+HEAD			=	
+
+SRCS			=	tests.cpp		\
+					Account.cpp		\
+
+OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
+OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}
+
+DEPS			=	${OBJS:.o=.d}
+DEPS_D			=	${OBJS_D:.o=.d}
+
+# --------------  Path  -------------- #
+
+PATH_HEAD		=	${addprefix ${DIR_HEAD}, ${HEAD}}
+
+# ----------  Compilation  ----------- #
+
+CC				=	c++
+CFLAGS			= 	-Wall -Wextra -Werror -std=c++98
+AR				= 	ar rcs
+FSANITIZE		=	-fsanitize=address
+OPTI			=	-O3
+MMD				=	-MMD
+
+# ------------  Commands  ------------ #
+
+RM				=	rm -rf
+MKDIR			=	mkdir -p
+LEAKS			=	leaks -atExit -- 
+LLDB			=	lldb
+
+# ****************************  RULES  ***************************** #
+
+all					:	
+						$(MAKE) -j ${NAME}
+
+# ---------  Compiled Rules  --------- #
+
+${NAME}				:	${OBJS}
+						${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+
+${DIR_OBJS}%.o		:	${DIR_SRCS}%.cpp Makefile | ${DIR_OBJS}
+						${CC} ${CFLAGS} ${MMD} -I ${DIR_HEAD} -c $< -o $@
+
+${DIR_OBJS}			:
+						${MKDIR} ${DIR_OBJS}
+
+-include ${DEPS}
+
+# ------  Compiled Rules Debug  ------ #
+
+${DEBUG}			:	${OBJS_D}
+						${CC} ${CFLAGS} ${OBJS_D} -g3 ${FSANITIZE} -o ${DEBUG}
+
+${DIR_OBJS_D}%.o	:	${DIR_SRCS}%.cpp Makefile | ${DIR_OBJS_D}
+						${CC} ${CFLAGS} -I ${DIR_HEAD} ${MMD} -g3 ${FSANITIZE} -c $< -o $@
+
+${DIR_OBJS_D}		:
+						${MKDIR} ${DIR_OBJS_D}
+
+-include ${DEPS_D}
+
+# ---------  Usual Commands  --------  #
+
+clean				:	
+						${RM} ${DIR_OBJS}
+						${RM} ${DIR_OBJS_D}
+
+fclean				:	clean
+						${RM} ${NAME}
+						${RM} ${DEBUG}
+
+re					:
+						$(MAKE) fclean
+						$(MAKE) all
+
+# ---------  Other Commands  --------- #
+
+debug				:	
+						$(MAKE) -j ${DEBUG}
+
+# -----------  Run Commands  --------- #
+
+run					:	all
+						./${NAME}
+
+runl				:	all
+						${LEAKS}./${NAME}
+
+runs				:	debug
+						./${DEBUG}
+
+rund				:	debug
+						${LLDB} ./${DEBUG}

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:09:08 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/06 14:07:13 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/07 10:03:53 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include <string>
+# include <ios>
+# include <limits>
+# include <iomanip>
 
 class Contact
 {
@@ -24,6 +27,7 @@ class Contact
 		std::string	_nickname;
 		std::string	_phone_number;
 		std::string	_darkest_secret;
+		int			_index;
 
 		std::string	_getString(std::string str) const;
 
@@ -31,7 +35,10 @@ class Contact
 		Contact();
 		~Contact();
 		
-		void		initContact(void);
+		void	initContact(void);
+		void	setIndex(int index);
+		void	print_name(int index) const;
+		void	print_all(int index) const;
 };
 
 #endif
