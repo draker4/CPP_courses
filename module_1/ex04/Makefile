@@ -6,8 +6,8 @@
 
 # ---  Final Executable  --- #
 
-NAME			=	brain
-DEBUG			=	brain_debug
+NAME			=	sed
+DEBUG			=	sed_debug
 
 # ----------  Directories  ----------- #
 
@@ -20,10 +20,7 @@ DIR_OBJS_D		=	.build_debug/
 
 HEAD			=	
 
-SRCS			=	main.cpp	\
-					HumanA.cpp	\
-					HumanB.cpp	\
-					Weapon.cpp
+SRCS			=	main.cpp
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}
