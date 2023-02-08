@@ -6,11 +6,12 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 12:27:44 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/07 11:39:21 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 14:41:39 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include <cstdlib>
 
 Contact::Contact(void)
 {
@@ -29,6 +30,8 @@ std::string Contact::_getString(std::string str) const
 	{
 		std::cout << str << std::flush;
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			exit(1);
 		if (std::cin.good() && !input.empty())
 			check = true;
 		else
