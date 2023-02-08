@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 10:39:26 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/07 11:39:21 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/08 10:38:28 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void Account::makeDeposit(int deposit)
 	std::cout << "p_amount:" << _amount << ";" << std::flush;
 	std::cout << "deposit:" << deposit << ";" << std::flush;
 	_amount += deposit;
+	_totalAmount += deposit;
 	std::cout << "amount:" << _amount << ";" << std::flush;
 	std::cout << "nb_deposits:" << _nbDeposits << std::endl;
 }
@@ -104,6 +105,7 @@ bool Account::makeWithdrawal(int withdrawal)
 	_amount -= withdrawal;
 	_nbWithdrawals++;
 	_totalNbWithdrawals++;
+	_totalAmount -= withdrawal;
 	std::cout << "withdrawal:" << withdrawal << ";" << std::flush;
 	std::cout << "amount:" << _amount << ";" << std::flush;
 	std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
