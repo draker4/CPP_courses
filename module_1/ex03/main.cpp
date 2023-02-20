@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 14:32:35 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/07 15:17:31 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/20 12:25:15 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main()
 		bob.attack();
 	}
 	{
+		std::cout << std::endl;
 		Weapon	club = Weapon("crude spiked club");
 		HumanB	jim("Jim");
 		jim.attack();

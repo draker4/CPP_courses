@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:30:29 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/07 17:11:03 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/20 12:26:17 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 		if (!ofs.is_open())
 		{
 			std::cout << red << "Getline function error" << reset << std::endl;
-			return (EXIT_FAILURE);
+			return (1);
 		}
 		ofs << sed(lines, argv[2], argv[3]) << std::flush;
 		ofs.close();
