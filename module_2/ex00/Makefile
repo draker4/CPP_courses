@@ -1,13 +1,13 @@
 # **********************  MINISHELL MAKEFILE  ********************** #
 
-.PHONY			:	all clean fclean re debug run runl runs rund runv
+.PHONY			:	all clean fclean re debug run runs rund runv
 
 # **************************  VARIABLES  *************************** #
 
 # ---  Final Executable  --- #
 
-NAME			=	harlFilter
-DEBUG			=	harlFilter_debug
+NAME			=	canonical_form
+DEBUG			=	canonical_form_debug
 
 # ----------  Directories  ----------- #
 
@@ -20,8 +20,7 @@ DIR_OBJS_D		=	.build_debug/
 
 HEAD			=	
 
-SRCS			=	main.cpp	\
-					Harl.cpp
+SRCS			=	main.cpp
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}
@@ -46,7 +45,6 @@ MMD				=	-MMD
 
 RM				=	rm -rf
 MKDIR			=	mkdir -p
-LEAKS			=	leaks -atExit -- 
 LLDB			=	lldb
 VALGRIND		=	valgrind --tool=memcheck --leak-check=full --leak-resolution=high --show-reachable=yes
 
@@ -104,9 +102,6 @@ debug				:
 
 run					:	all
 						./${NAME}
-
-runl				:	all
-						${LEAKS}./${NAME}
 
 runs				:	debug
 						./${DEBUG}
