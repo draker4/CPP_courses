@@ -35,7 +35,7 @@ PATH_HEAD		=	${addprefix ${DIR_HEAD}, ${HEAD}}
 # ----------  Compilation  ----------- #
 
 CC				=	c++
-CFLAGS			= 	-Wall -Wextra -Werror -std=c++98
+CFLAGS			= 	-Wall -Wextra -Werror #-std=c++98
 AR				= 	ar rcs
 FSANITIZE		=	-fsanitize=address
 OPTI			=	-O3

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:30:29 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/20 12:26:17 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/21 11:46:11 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ std::string	sed(std::string lines, std::string to_find, std::string to_remplace)
 	{
 		lines.erase(pos, to_find.length());
 		lines.insert(pos, to_remplace);
-		pos = lines.find(to_find, pos + 1);
+		pos = lines.find(to_find, pos + to_remplace.length());
 	}
 	return (lines);
 }
