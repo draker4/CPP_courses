@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:49:40 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/21 19:25:24 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/22 12:32:24 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 Fixed::Fixed(void) : _value(0)
 {
-	std::cout << RED_F << "Default constructor called" << RESET << std::endl;
+	std::cout << RED_F << "Default Fixed constructor called" << RESET << std::endl;
 }
 
 Fixed::Fixed(const int value) : _value(value << _frac_bit)
 {
-	std::cout << RED_F << "Int constructor called" << RESET << std::endl;
+	std::cout << RED_F << "Int Fixed constructor called" << RESET << std::endl;
 }
 
 Fixed::Fixed(const float value) : _value(std::roundf(value * (1 << _frac_bit)))
 {
-	std::cout << RED_F << "Float constructor called" << RESET << std::endl;
+	std::cout << RED_F << "Float Fixed constructor called" << RESET << std::endl;
 }
 
 Fixed::Fixed(const Fixed &rhs)
 {
-	std::cout << RED_F << "Copy constructor called" << RESET << std::endl;
+	std::cout << RED_F << "Copy Fixed constructor called" << RESET << std::endl;
 	*this = rhs;
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << RED_F << "Destructor called" << RESET << std::endl;
+	std::cout << RED_F << "Fixed destructor called" << RESET << std::endl;
 }
 
 int	Fixed::getRawBits(void) const
@@ -52,7 +52,7 @@ void	Fixed::setRawBits(int const raw)
 
 Fixed	&Fixed::operator=(const Fixed &rhs)
 {
-	std::cout << RED_F << "Copy assignement operator called" << RESET << std::endl;
+	std::cout << RED_F << "Fixed copy assignement operator called" << RESET << std::endl;
 	_value = rhs.getRawBits();
 	return *this;
 }
