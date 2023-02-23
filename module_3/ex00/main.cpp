@@ -5,29 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 16:57:20 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/20 13:52:26 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2023/02/23 13:07:20 by bperriol          #+#    #+#             */
+/*   Updated: 2023/02/23 14:40:59 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <stdlib.h>
+#include "ClapTrap.hpp"
+#include "colors.hpp"
 
-int	main(int	argc, char **argv)
+int	main(void)
 {
-	Harl	harl;
+	ClapTrap	paul("Paul");
+	ClapTrap	quentin("Quentin");
 
-	if (argc == 1)
-	{
-		std::cout << "Please enter at least one argument!" << std::endl;
-		return (1);
-	}
-	if (argc != 2)
-	{
-		std::cout << "Please enter one argument only!" << std::endl;
-		return (1);
-	}
-	harl.complain(argv[1]);
-
-	return (0);
+	std::cout << RED_F << quentin << std::endl;
 }

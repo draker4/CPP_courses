@@ -6,8 +6,8 @@
 
 # ---  Final Executable  --- #
 
-NAME			=	bsp
-DEBUG			=	bsp_debug
+NAME			=	open
+DEBUG			=	open_debug
 
 # ----------  Directories  ----------- #
 
@@ -20,7 +20,7 @@ DIR_OBJS_D		=	.build_debug/
 
 HEAD			=	
 
-SRCS			=	main.cpp	Fixed.cpp	Point.cpp	bsp.cpp
+SRCS			=	main.cpp	ClapTrap.cpp
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}

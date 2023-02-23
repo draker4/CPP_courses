@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:49:40 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/21 13:12:17 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/23 13:52:58 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Fixed::Fixed(const int value) : _value(value << _frac_bit)
 	std::cout << RED_F << "Int constructor called" << RESET << std::endl;
 }
 
-Fixed::Fixed(const float value) : _value(std::roundf(value * (1 << _frac_bit)))
+Fixed::Fixed(const float value) : _value(roundf(value * (1 << _frac_bit)))
 {
 	std::cout << RED_F << "Float constructor called" << RESET << std::endl;
 }
