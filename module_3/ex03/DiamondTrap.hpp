@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:07:20 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/23 16:27:02 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2023/02/23 17:22:03 by bperriol          #+#    #+#             */
+/*   Updated: 2023/02/23 17:55:41 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "colors.hpp"
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-int	main(void)
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
+
+class DiamondTrap : public FragTrap, public ScavTrap
 {
-	ClapTrap	paul("Paul");
-	ClapTrap	quentin("Quentin");
+	public:
+	
+		DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap &rhs);
+		~DiamondTrap(void);
 
-	std::cout << RED_F << quentin << std::endl;
-	quentin.attack("cat");
-	quentin.beRepaired(4);
-	paul.takeDamage(5);
-}
+		DiamondTrap	&operator=(const DiamondTrap &rhs);
+	
+	private:
+	
+		DiamondTrap(void);
+		
+		std::string	_name;
+};
+
+#endif

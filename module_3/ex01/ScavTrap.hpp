@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:07:20 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/23 16:27:02 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2023/02/23 15:55:33 by bperriol          #+#    #+#             */
+/*   Updated: 2023/02/23 16:42:51 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "colors.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap
 {
-	ClapTrap	paul("Paul");
-	ClapTrap	quentin("Quentin");
+	public:
 
-	std::cout << RED_F << quentin << std::endl;
-	quentin.attack("cat");
-	quentin.beRepaired(4);
-	paul.takeDamage(5);
-}
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap &rhs);
+		~ScavTrap(void);
+		
+		ScavTrap	&operator=(const ScavTrap &rhs);
+		
+		void		guardGate(void);
+		void		attack(const std::string &target);
+
+	private:
+	
+		ScavTrap(void);
+};
+
+#endif

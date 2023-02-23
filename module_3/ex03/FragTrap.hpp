@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 13:07:20 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/23 16:27:02 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2023/02/23 15:55:33 by bperriol          #+#    #+#             */
+/*   Updated: 2023/02/23 17:37:34 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "colors.hpp"
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-int	main(void)
+# include "ClapTrap.hpp"
+
+class FragTrap : virtual public ClapTrap
 {
-	ClapTrap	paul("Paul");
-	ClapTrap	quentin("Quentin");
+	public:
 
-	std::cout << RED_F << quentin << std::endl;
-	quentin.attack("cat");
-	quentin.beRepaired(4);
-	paul.takeDamage(5);
-}
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &rhs);
+		~FragTrap(void);
+		
+		FragTrap	&operator=(const FragTrap &rhs);
+
+		void		highFivesGuys(void);
+
+	protected:
+	
+		FragTrap(void);
+};
+
+#endif
