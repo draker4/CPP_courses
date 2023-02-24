@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:55:24 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/23 18:23:53 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/24 12:32:53 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
-	this->_hit_points = 100;
-	this->_init_hit_points = 100;
 	this->_energy_points = 50;
-	this->_attack_damage = 20;
 	std::cout << YELLOW_F << "Default ScavTrap constructor called" << std::endl;
 }
 

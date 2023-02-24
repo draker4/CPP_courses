@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:07:20 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/23 17:47:16 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/24 12:39:14 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ int	main(void)
 		henry_copy.beRepaired(20);
 		henry_copy.attack("Roger");
 		henry.highFivesGuys();
-		std::cout << RED_F << "Henry copy used " << 100 - henry_copy.getEnergyPoints() << " energy points" << std::endl;
+		std::cout << RED_F << "Henry copy used " << 50 - henry_copy.getEnergyPoints() << " energy points" << std::endl;
 	}
 }
