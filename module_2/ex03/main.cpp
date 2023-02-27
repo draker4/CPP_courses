@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:22:38 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/22 13:26:01 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/27 12:00:58 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int main(void)
 			std::cout << YELLOW_B << BLACK_F << "Point d in triangle abc" << RESET << std::endl;
 		else
 			std::cout << YELLOW_B << BLACK_F << "Point d not in triangle abc" << RESET << std::endl;
-		std::cout << std::endl; 
+		std::cout << std::endl;
 	}
 	return 0;
 }

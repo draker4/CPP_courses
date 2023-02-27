@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:22:38 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/21 19:26:07 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/27 11:42:14 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int main(void)
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << Fixed::max(a, b) << std::endl;
+		std::cout << Fixed::min(a, b) << std::endl;
 	}
 
 	return 0;
