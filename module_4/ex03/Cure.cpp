@@ -6,11 +6,12 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:40:23 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/27 15:15:11 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/27 20:09:42 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
+#include "ICharacter.hpp"
 #include "colors.hpp"
 
 // destructors - constructors
@@ -25,7 +26,7 @@ Cure::Cure(void) : AMateria("cure")
 	std::cout << BLUE_F << "Default Cure constructor called" << std::endl;
 }
 
-Cure::Cure(const Cure &rhs)
+Cure::Cure(const Cure &rhs) : AMateria(rhs)
 {
 	*this = rhs;
 	std::cout << BLUE_F << "Copy Cure constructor called" << std::endl;
@@ -42,7 +43,7 @@ Cure	&Cure::operator=(const Cure &rhs)
 
 // member functions
 
-AMateria	*Cure::clone(const Cure &rhs)
+AMateria	*Cure::clone(void) const
 {
 	return (new Cure(*this));
 }

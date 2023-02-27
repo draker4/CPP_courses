@@ -6,11 +6,12 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:40:23 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/27 15:15:04 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/27 20:09:37 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
+#include "ICharacter.hpp"
 #include "colors.hpp"
 
 // destructors - constructors
@@ -25,7 +26,7 @@ Ice::Ice(void) : AMateria("ice")
 	std::cout << BLUE_F << "Default Ice constructor called" << std::endl;
 }
 
-Ice::Ice(const Ice &rhs) : AMateria("ice")
+Ice::Ice(const Ice &rhs) : AMateria(rhs)
 {
 	*this = rhs;
 	std::cout << BLUE_F << "Copy Ice constructor called" << std::endl;
@@ -42,12 +43,12 @@ Ice	&Ice::operator=(const Ice &rhs)
 
 // member functions
 
-AMateria	*Ice::clone()
+AMateria	*Ice::clone(void) const
 {
 	return (new Ice(*this));
 }
 
 void	Ice::use(ICharacter &target)
 {
-	std::cout << "* shoots an ice bolt at " << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

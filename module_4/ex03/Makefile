@@ -20,7 +20,9 @@ DIR_OBJS_D		=	.build_debug/
 
 HEAD			=	
 
-SRCS			=	main.cpp	AMateria.cpp
+SRCS			=	main.cpp		AMateria.cpp		\
+					Character.cpp	Cure.cpp			\
+					Ice.cpp			MateriaSource.cpp	\
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}
