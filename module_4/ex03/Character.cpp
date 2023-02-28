@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:08:43 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/27 21:14:38 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 11:47:22 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	Character::equip(AMateria *m)
 	{
 		if (_inventory[i] == NULL)
 		{
-			_inventory[i] = m->clone();
+			_inventory[i] = m;
 			std::cout << YELLOW_F << "Character " << _name << " equips " << m->getType() << std::endl;
 			return ;
 		}
@@ -100,7 +100,8 @@ void	Character::use(int idx, ICharacter &target)
 	if (idx >= 0 && idx <= 3 && _inventory[idx] != NULL)
 	{
 		_inventory[idx]->use(target);
-		unequip(idx);
+		delete(_inventory[idx]);
+		_inventory[idx] = NULL;
 	}
 	std::cout << YELLOW_F << "Character " << _name << " doesn't have an equipment in " << idx << " slot" << std::endl;
 }

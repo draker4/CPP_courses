@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:18:15 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/27 21:23:06 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 11:49:21 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,9 @@ int main(void)
 		std::cout << std::endl;
 		Charles.equip(mat1);
 		Charles.equip(mat2);
-		// Charles.unequip(1);
+		Charles.unequip(1);
 		std::cout << std::endl;
 
-		delete mat1;
-		delete mat2;
 		// Character.deleteAll();
 	}
 	
