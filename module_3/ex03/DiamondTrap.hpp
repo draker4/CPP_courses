@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:22:03 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/24 10:35:19 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 16:49:16 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class DiamondTrap : public FragTrap, public ScavTrap
 
 		DiamondTrap	&operator=(const DiamondTrap &rhs);
 		void		attack(const std::string &target);
+		void		whoAmI(void) const;
 	
 	private:
 	

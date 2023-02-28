@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:22:20 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/24 12:38:09 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 16:52:04 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &rhs)
 void	DiamondTrap::attack(const std::string &target)
 {
 	ScavTrap::attack(target);
+}
+
+void	DiamondTrap::whoAmI(void) const
+{
+	std::cout << MAGENTA_F << "Name is " << _name << " and ClapTrap name is " << ClapTrap::_name << std::endl;
 }
