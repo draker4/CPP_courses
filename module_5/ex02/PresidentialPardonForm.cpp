@@ -6,12 +6,13 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:26:39 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/28 11:38:24 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 17:41:07 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
 
 // destructor
 
@@ -41,4 +42,13 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 {
 	_target = rhs._target;
 	std::cout << MAGENTA_F << "Copy PresidentialPardonForm assignement operator called" << std::endl;
+}
+
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	if (!this->getSigned())
+		throw AForm::FormNotSigned();
+	if (executor.getGrade() > this->getGradeRequired())
+		throw AForm::GradeTooLowException();
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" ,, std::endl;
 }

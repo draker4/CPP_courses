@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:52:57 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/27 19:03:43 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/01 11:24:38 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 MateriaSource::~MateriaSource(void)
 {
+	for (int i = 0; i < 4; i++)
+		delete _inventory[i];
 	std::cout << WHITE_F << "Default MateriaSource destructor called" << std::endl;
 }
 
@@ -55,7 +57,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 	{
 		if (_inventory[i] == NULL)
 		{
-			_inventory[i] = m->clone();
+			_inventory[i] = m;
 			return ;
 		}
 	}

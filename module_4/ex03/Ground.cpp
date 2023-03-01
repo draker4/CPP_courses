@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:49:59 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/28 12:48:07 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/01 11:02:40 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 
 Ground::~Ground(void)
 {
-	delete [] _inventory;
-	std::cout << YELLOW_F << "Default Ground destructor called";
+	for (int i = 0; i < 10; i++)
+		delete _inventory[i];
+	std::cout << YELLOW_F << "Default Ground destructor called" << RESET << std::endl;
 }
 
 // constructor
@@ -27,20 +28,21 @@ Ground::Ground(void)
 {
 	for (int i = 0; i < 10; i++)
 		_inventory[i] = NULL;
-	std::cout << YELLOW_F << "Default Ground destructor called";
+	std::cout << YELLOW_F << "Default Ground destructor called" << std::endl;
 }
 
 Ground::Ground(const Ground &rhs)
 {
 	*this = rhs;
-	std::cout << YELLOW_F << "Copy Ground destructor called";
+	std::cout << YELLOW_F << "Copy Ground destructor called" << std::endl;
 }
 
 Ground	&Ground::operator=(const Ground &rhs)
 {
 	for (int i = 0; i < 10; i++)
 		_inventory[i] = rhs._inventory[i];
-	std::cout << YELLOW_F << "Copy Ground assignement operator called";
+	std::cout << YELLOW_F << "Copy Ground assignement operator called" << std::endl;
+	return *this;
 }
 
 AMateria	*Ground::find(int idx)
@@ -58,7 +60,8 @@ AMateria	*Ground::find(int idx)
 		std::cout << "Object " << ptr->getType() << " found on the ground" << std::endl;
 		return ptr;
 	}
-	std::cout << "No object at index " << idx << "on the ground" << std::endl;
+	std::cout << "No object at index " << idx << " on the ground" << std::endl;
+	return NULL;
 }
 
 void	Ground::fall(AMateria *m)

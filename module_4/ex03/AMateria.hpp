@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:19:07 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/27 19:15:53 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/01 11:30:49 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class AMateria
 		AMateria(void);
 
 		std::string	_type;
+		bool		_equip;
 
 	public:
 	
@@ -34,6 +35,8 @@ class AMateria
 		AMateria	&operator=(const AMateria &rhs);
 
 		std::string const 	&getType() const;
+		bool				getEquip() const;
+		void				setEquip(bool equip);
 		
 		virtual	AMateria	*clone() const = 0;
 		virtual void		use(ICharacter &target);

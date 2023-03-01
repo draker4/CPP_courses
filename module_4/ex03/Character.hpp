@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:43:16 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/27 21:15:16 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/01 10:45:46 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHARACTER_HPP
 
 # include "ICharacter.hpp"
+# include "Ground.hpp"
 
 class	Character : public ICharacter
 {
@@ -23,7 +24,7 @@ class	Character : public ICharacter
 	
 		AMateria			*_inventory[4];
 		std::string			_name;
-		AMateria			*_ground;
+		static Ground		_ground;
 
 	public:
 	
@@ -38,6 +39,7 @@ class	Character : public ICharacter
 		void 				unequip(int idx);
 		void 				use(int idx, ICharacter& target);
 
+		void				find(int idx);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:23:30 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/28 11:36:16 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 17:20:36 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ public:
 	~RobotomyRequestForm(void);
 
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
+	
+	virtual void		execute(Bureaucrat const & executor) const;
 };
 
 #endif

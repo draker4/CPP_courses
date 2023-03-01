@@ -23,6 +23,7 @@ HEAD			=
 SRCS			=	main.cpp		AMateria.cpp		\
 					Character.cpp	Cure.cpp			\
 					Ice.cpp			MateriaSource.cpp	\
+					Ground.cpp
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}

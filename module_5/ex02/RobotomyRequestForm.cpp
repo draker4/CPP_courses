@@ -6,12 +6,13 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:26:39 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/28 11:36:54 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/02/28 18:04:45 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Bureaucrat.hpp"
 
 // destructor
 
@@ -41,4 +42,11 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 {
 	_target = rhs._target;
 	std::cout << MAGENTA_F << "Copy RobotomyRequestForm assignement operator called" << std::endl;
+}
+
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
+{
+	if (!this->getSigned())
+		throw AForm::FormNotSigned();
+	if (executor.get)
 }
