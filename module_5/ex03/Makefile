@@ -6,8 +6,8 @@
 
 # ---  Final Executable  --- #
 
-NAME			=	maggots
-DEBUG			=	maggots_debug
+NAME			=	intern
+DEBUG			=	intern_debug
 
 # ----------  Directories  ----------- #
 
@@ -23,6 +23,7 @@ HEAD			=
 SRCS			=	main.cpp					Bureaucrat.cpp				\
 					AForm.cpp					PresidentialPardonForm.cpp	\
 					RobotomyRequestForm.cpp		ShrubberyCreationForm.cpp	\
+					Intern.cpp
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}
