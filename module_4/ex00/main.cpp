@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:40:51 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/24 15:37:13 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/02 14:24:59 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ int	main(void)
 		Animal	*dog = new Dog();
 		Animal	dog2;
 		Dog		dog3;
+		Dog		dog4;
 
 		// dog3 = dog2; // cannot convert Dog = Animal;
 		dog2 = dog3; // can with Animal = Dog
+		dog4 = dog3;
 		
 		std::cout << RESET << std::endl;
 		std::cout << "type animal = " << animal.getType() << std::endl;
@@ -94,8 +96,10 @@ int	main(void)
 		std::cout << RED_B << "MAIN WRONG TEST" << RESET << std::endl;
 		const WrongAnimal* meta = new WrongAnimal();
 		const WrongAnimal* i = new WrongCat();
+		WrongCat	trueCat;
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound(); //will NOT output the cat sound!
+		trueCat.makeSound(); // will output the cat sound
 		meta->makeSound();
 		
 		delete meta;

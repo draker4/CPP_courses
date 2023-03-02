@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:22:03 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/24 15:42:33 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/02 14:10:12 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ Brain::Brain(const Brain &rhs)
 
 Brain	&Brain::operator=(const Brain &rhs)
 {
-	for (int i = 0; i < 100; i++)
-		_ideas[i] = rhs._ideas[i];
+	// for (int i = 0; i < 100; i++)
+	// 	_ideas[i] = rhs._ideas[i];
+	(void)rhs;
 	std::cout << RED_F << "Copy Brain assignement operator called" << RESET << std::endl;
 	return *this;
 }

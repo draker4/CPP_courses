@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 11:49:59 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/01 11:02:40 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/02 14:35:13 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ Ground::Ground(void)
 {
 	for (int i = 0; i < 10; i++)
 		_inventory[i] = NULL;
-	std::cout << YELLOW_F << "Default Ground destructor called" << std::endl;
+	std::cout << YELLOW_F << "Default Ground constructor called" << std::endl;
 }
 
 Ground::Ground(const Ground &rhs)
 {
 	*this = rhs;
-	std::cout << YELLOW_F << "Copy Ground destructor called" << std::endl;
+	std::cout << YELLOW_F << "Copy Ground constructor called" << std::endl;
 }
 
 Ground	&Ground::operator=(const Ground &rhs)

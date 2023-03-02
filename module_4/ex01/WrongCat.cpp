@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:44:36 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/24 14:53:43 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/02 14:29:47 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ WrongCat::WrongCat(void)
 	std::cout << YELLOW_F << "Default WrongCat constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &rhs) : WrongAnimal()
+WrongCat::WrongCat(const WrongCat &rhs) : WrongAnimal(rhs)
 {
 	*this = rhs;
 	std::cout << YELLOW_F << "Copy WrongCat constructor called" << std::endl;

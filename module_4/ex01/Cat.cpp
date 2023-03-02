@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:44:36 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/24 15:46:31 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/02 14:21:48 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ Cat::Cat(void)
 	_brain = new Brain();
 }
 
-Cat::Cat(const Cat &rhs) : Animal()
+Cat::Cat(const Cat &rhs) : Animal(rhs)
 {
+	_brain = new Brain(*rhs._brain);
 	*this = rhs;
 	std::cout << YELLOW_F << "Copy Cat constructor called" << std::endl;
 }
@@ -39,7 +40,7 @@ Cat::Cat(const Cat &rhs) : Animal()
 Cat &Cat::operator=(const Cat &rhs)
 {
 	_type = rhs._type;
-	_brain = rhs._brain;
+	*_brain = *rhs._brain;
 	std::cout << YELLOW_F << "Copy assignement Cat operator called" << std::endl;
 	return *this;
 }

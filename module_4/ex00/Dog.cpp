@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 13:44:36 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/24 14:32:54 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/02 14:23:15 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Dog::Dog(void)
 	std::cout << BLUE_F << "Default Dog constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &rhs) : Animal()
+Dog::Dog(const Dog &rhs) : Animal(rhs)
 {
 	*this = rhs;
 	std::cout << BLUE_F << "Copy Dog constructor called" << std::endl;
