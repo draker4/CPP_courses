@@ -5,32 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 17:27:34 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 10:53:58 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2023/03/03 12:37:51 by bperriol          #+#    #+#             */
+/*   Updated: 2023/03/03 12:56:29 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "colors.hpp"
-#include "Conversion.hpp"
+#include "Data.hpp"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	(void)argv;
-	if (argc != 2)
-	{
-		std::cerr << RED_B << "Please enter one argument and one only!" << RESET << std::endl;
-		return 1;
-	}
-	try {
-		Conversion	test(argv[1]);
-		
-		std::cout << test;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "error with conversion because : " << e.what() << std::endl;
-	}
+	Data	data;
+	
+	data.i_test = 10;
+	data.s_test = "salut";
+	
+	Data	*ptr_data = &data;
+
+	std::cout << "int =" << ptr_data->i_test << std::endl;
+	std::cout << "string =" << ptr_data->s_test << std::endl;
+	std::cout << "address =" << ptr_data << std::endl;
+	std::cout << std::endl;
+	
+	uintptr_t	ptr;
+	ptr = serialize(ptr_data);
+	
+	Data	*return_ptr;
+	return_ptr = deserialize(ptr);
+	
+	std::cout << "int =" << return_ptr->i_test << std::endl;
+	std::cout << "string =" << return_ptr->s_test << std::endl;
+	std::cout << "address =" << return_ptr << std::endl;
 	
 	return 0;
 }

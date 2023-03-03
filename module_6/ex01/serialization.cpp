@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   serialization.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 17:27:34 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 10:53:58 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2023/03/03 12:40:55 by bperriol          #+#    #+#             */
+/*   Updated: 2023/03/03 12:54:58 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Data.hpp"
 #include "colors.hpp"
-#include "Conversion.hpp"
 
-int	main(int argc, char **argv)
+uintptr_t serialize(Data* ptr)
 {
-	(void)argv;
-	if (argc != 2)
-	{
-		std::cerr << RED_B << "Please enter one argument and one only!" << RESET << std::endl;
-		return 1;
-	}
-	try {
-		Conversion	test(argv[1]);
-		
-		std::cout << test;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "error with conversion because : " << e.what() << std::endl;
-	}
-	
-	return 0;
+	uintptr_t	uintptr;
+
+	uintptr = reinterpret_cast<uintptr_t>(ptr);
+	return uintptr;
+}
+
+Data* deserialize(uintptr_t raw)
+{
+	Data	*ptr_data;
+
+	ptr_data = reinterpret_cast<Data *>(raw);
+	return ptr_data;
 }

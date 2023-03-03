@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:05:36 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/02 18:05:06 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 11:53:16 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define CONVERSION_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
-#include <limits.h>
-#include <float.h>
+#include <limits>
 #include <errno.h>
 
 
@@ -44,12 +44,12 @@ class   Conversion
         
         Conversion		&operator=(const Conversion &rhs);
         
-        void			Convert(const std::string arg);
+        void			Convert(void);
         
-        void    		arg_char(std::string arg);
-        void   			arg_int(std::string arg);
-        void			arg_float(std::string arg);
-        void			arg_double(std::string arg);
+        void    		arg_char(void);
+        void   			arg_int(void);
+        void			arg_float(void);
+        void			arg_double(void);
 
 		std::ostream	&printInf(std::ostream &o) const;
 		std::ostream	&printInff(std::ostream &o) const;

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:05:25 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/02 18:05:30 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 12:32:56 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ Conversion::~Conversion(void)
 
 // constructors
 
-Conversion::Conversion(void): _arg(""), _int(0), _char('\0'), _float(0.0f), _double(0.0)
+Conversion::Conversion(void): _arg(""), _int(0), _char('\0'), _float(0.0f), _double(0.0), _inf(false), _inff(false)
 {
 	std::cout << RED_F << "Default Conversion constructor" << std::endl;
 }
 
-Conversion::Conversion(std::string arg) : _arg(arg), _int(0), _char('\0'), _float(0.0f), _double(0.0)
+Conversion::Conversion(std::string arg) : _arg(arg), _int(0), _char('\0'), _float(0.0f), _double(0.0), _inf(false), _inff(false)
 {
-	Convert(arg);
+	Convert();
 	std::cout << RED_F << "String Conversion constructor" << std::endl;
 }
 
@@ -48,92 +48,98 @@ Conversion	&Conversion::operator=(const Conversion &rhs)
 	_char = rhs._char;
 	_float = rhs._float;
 	_double = rhs._double;
+	_inf = rhs._inf;
+	_inff = rhs._inff;
 	std::cout << RED_F << "Copy Conversion assignement operator" << std::endl;
 	return *this;
 }
 
 // member functions
 
-void	Conversion::Convert(const std::string arg)
+void	Conversion::Convert(void)
 {
 	int	nb_point = 0;
 
-	if (!arg.compare("-inff") || !arg.compare("inff") || !arg.compare("nanf"))
-	{
-		_inf = true;
-		return ;
-	}
-	else if (!arg.compare("-inf") || !arg.compare("inf") || !arg.compare("nan"))
+	if (!_arg.compare("-inff") || !_arg.compare("inff") || !_arg.compare("nanf"))
 	{
 		_inff = true;
+		std::cout << RESET << CYAN_B << "arg is a float" << RESET << std::endl;
 		return ;
 	}
-	if (arg[0] == '+' || arg[0] == '-' || std::isdigit(arg[0]))
+	else if (!_arg.compare("-inf") || !_arg.compare("inf") || !_arg.compare("nan"))
 	{
-		if (!arg[1])
-			return arg_char(arg);
-		else if (arg.substr(1).find_first_not_of("0123456789") == std::string::npos)
-			return arg_int(arg);
+		_inf = true;
+		std::cout << RESET << CYAN_B << "arg is a double" << RESET << std::endl;
+		return ;
+	}
+	if (_arg[0] == '+' || _arg[0] == '-' || std::isdigit(_arg[0]))
+	{
+		if (!_arg[1] && !std::isdigit(_arg[0]))
+			return arg_char();
+		else if (_arg.substr(1).find_first_not_of("0123456789") == std::string::npos)
+			return arg_int();
 		else
 		{
-			for (size_t i = 1; i < arg.length(); i++)
+			for (size_t i = 1; i < _arg.length(); i++)
 			{
-				if (i == arg.length() - 1 && arg[i] == 'f')
-					return arg_float(arg);
-				if (arg[i] == '.')
+				if (i == _arg.length() - 1 && _arg[i] == 'f')
+					return arg_float();
+				if (_arg[i] == '.')
 					nb_point++;
-				if ((!std::isdigit(arg[i]) && arg[i] != '.') || nb_point > 1)
+				if ((!std::isdigit(_arg[i]) && _arg[i] != '.') || nb_point > 1)
 					throw WrongArgs();
 			}
-			return arg_double(arg);
+			return arg_double();
 		}
 	}
-	if (arg.length() == 1)
-		return arg_char(arg);
+	if (_arg.length() == 1)
+		return arg_char();
 	throw WrongArgs();
 }
 
-void	Conversion::arg_float(std::string arg)
+void	Conversion::arg_float(void)
 {
 	errno = 0;
-	double	d = strtod(arg.c_str(), NULL);
+	double	d = strtod(_arg.c_str(), NULL);
 	
-	if (errno == ERANGE || d < FLT_MIN || d > FLT_MAX)
+	if (errno == ERANGE || d < -std::numeric_limits<float>::max() || d > std::numeric_limits<float>::max())
 		throw WrongArgs();
-	_float = static_cast<float>(d);
+	std::cout << RESET << CYAN_B << "arg is a float" << RESET << std::endl;
+	_float = strtof(_arg.c_str(), NULL);
 	_int = static_cast<int>(_float);
 	_double = static_cast<double>(_float);
 	_char = static_cast<char>(_float);
 }
 
-void	Conversion::arg_int(std::string arg)
+void	Conversion::arg_int(void)
 {
-	long int	li = strtol(arg.c_str(), NULL, 10);
+	long int	li = strtol(_arg.c_str(), NULL, 10);
 
-	if (errno == ERANGE || li > INT_MAX || li < INT_MIN)
-		return arg_double(arg);
-	_int = static_cast<int>(li);
+	if (errno == ERANGE || li > std::numeric_limits<int>::max() || li < std::numeric_limits<int>::min())
+		return arg_double();
+	std::cout << RESET << CYAN_B << "arg is an int" << RESET << std::endl;
+	_int = std::atoi(_arg.c_str());
 	_float = static_cast<float>(_int);
 	_double = static_cast<double>(_int);
 	_char = static_cast<char>(_int);
 }
 
-void	Conversion::arg_char(std::string arg)
+void	Conversion::arg_char(void)
 {
-	_char = arg[0];
+	std::cout << RESET << CYAN_B << "arg is a char" << RESET << std::endl;
+	_char = _arg[0];
 	_float = static_cast<float>(_char);
 	_double = static_cast<double>(_char);
 	_int = static_cast<int>(_char);
 }
 
-void	Conversion::arg_double(std::string arg)
+void	Conversion::arg_double(void)
 {
 	errno = 0;
-	double	d = strtod(arg.c_str(), NULL);
-	
+	_double = strtod(_arg.c_str(), NULL);
 	if (errno == ERANGE)
 		throw WrongArgs();
-	_double = d;
+	std::cout << RESET << CYAN_B << "arg is a double" << RESET << std::endl;
 	_float = static_cast<float>(_double);
 	_int = static_cast<int>(_double);
 	_char = static_cast<char>(_double);
@@ -152,7 +158,7 @@ std::ostream	&Conversion::printChar(std::ostream &o) const
 
 std::ostream	&Conversion::printInt(std::ostream &o) const
 {
-	if (_double < INT_MIN || _double > INT_MAX)
+	if (_double < std::numeric_limits<int>::min() || _double > std::numeric_limits<int>::max())
 		o << "Impossible";
 	else
 		o << _int;
@@ -161,16 +167,43 @@ std::ostream	&Conversion::printInt(std::ostream &o) const
 
 std::ostream	&Conversion::printFloat(std::ostream &o) const
 {
-	if (_double < FLT_MIN || _double > FLT_MAX)
+	size_t	precision = 1;
+	size_t	pos = _arg.find_first_of(".");
+
+	if (_double < -std::numeric_limits<float>::max() || _double > std::numeric_limits<float>::max())
 		o << "Impossible";
 	else
-		o << _float;
+	{
+		if (pos != std::string::npos)
+		{
+			while (_arg[pos + 1] != '\0' && _arg[pos + 1] != 'f')
+			{
+				if (pos != _arg.find_first_of("."))
+					precision++;
+				pos++;
+			}
+		}
+		o << std::setprecision(precision) << std::fixed << _float;
+		o << "f";
+	}
 	return o;
 }
 
 std::ostream	&Conversion::printDouble(std::ostream &o) const
 {
-	o << _double;
+	size_t	precision = 1;
+	size_t	pos = _arg.find_first_of(".");
+
+	if (pos != std::string::npos)
+	{
+		while (_arg[pos + 1] != '\0' && _arg[pos + 1] != 'f')
+			{
+				if (pos != _arg.find_first_of("."))
+					precision++;
+				pos++;
+			}
+	}
+	o << std::setprecision(precision) << std::fixed << _double;
 	return o;
 }
 
@@ -188,7 +221,7 @@ std::ostream	&Conversion::printInff(std::ostream &o) const
 	o << "char: impossible" << std::endl;
 	o << "int: impossible" << std::endl;
 	o << "float: " << _arg << std::endl;
-	o << "double: " << _arg.substr(0, 2) << std::endl;
+	o << "double: " << _arg.substr(0, 4) << std::endl;
 	return o;
 }
 
