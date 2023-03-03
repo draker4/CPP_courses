@@ -5,38 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 10:07:55 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 14:03:43 by bperriol         ###   ########lyon.fr   */
+/*   Created: 2023/03/03 13:24:46 by bperriol          #+#    #+#             */
+/*   Updated: 2023/03/03 14:03:02 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 #include "colors.hpp"
-#include "Bureaucrat.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "Intern.hpp"
-
-void	testIntern(void)
-{
-	AForm		*f1;
-	Intern		you;
-	Bureaucrat	me("Haha", 1);
-	
-	f1 = you.makeForm("presidential pardon", "home");
-	std::cout << RESET << *f1 << std::endl;
-	me.signForm(*f1);
-	std::cout << RESET << *f1 << std::endl;
-	me.executeForm(*f1);
-	delete f1;
-}
 
 int	main(void)
 {
   	srand(time(NULL));
-	std::cout << WHITE_B << BLACK_F << "Test Form" << RESET << std::endl;
+	Base	*first = generate();
+	Base	*second = generate();
+	Base	*third = generate();
+
+	identify(first);
+	identify(second);
+	identify(third);
+	
 	std::cout << std::endl;
 	
-	testIntern();
-	std::cout << std::endl;
+	identify(*first);
+	identify(*second);
+	identify(*third);
+	
+	delete first;
+	delete second;
+	delete third;
 }

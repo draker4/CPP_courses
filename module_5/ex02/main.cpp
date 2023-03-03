@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:07:55 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/01 12:43:37 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 14:03:24 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	testOkExecution(void)
 
 int	main(void)
 {
+  	srand(time(NULL));
 	std::cout << WHITE_B << BLACK_F << "Test Form" << RESET << std::endl;
 	std::cout << std::endl;
 	
