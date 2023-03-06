@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:31:57 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/28 10:58:03 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 11:12:37 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ class	Form
 		const std::string 	_name;
 		bool				_signed;
 		const unsigned int	_grade_to_signed;
-		const unsigned int	_grade_to_required;
+		const unsigned int	_grade_to_execute;
 		
 	public:
 
-		Form(const std::string name, int grade_to_signed, int grade_to_required);
+		Form(const std::string name, int grade_to_signed, int _grade_to_execute);
 		Form(const Form &rhs);
 		~Form(void);
 
@@ -48,7 +48,7 @@ class	Form
 		
 		const std::string	getName(void) const;
 		unsigned int		getGradeToSigned(void) const;
-		unsigned int		getGradeToRequired(void) const;
+		unsigned int		getGradeToExecute(void) const;
 		bool				getSigned(void) const;
 		
 		void	beSigned(const Bureaucrat &b);

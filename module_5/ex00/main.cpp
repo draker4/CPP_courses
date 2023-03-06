@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:07:55 by bperriol          #+#    #+#             */
-/*   Updated: 2023/02/28 10:29:27 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 11:10:35 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	testCreateBureaucrat(void)
 		
 		std::cout << RESET << bapt << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e) {
+	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 }
@@ -37,8 +37,8 @@ void	testTooHighBureaucrat(void)
 		bapt2.increment();
 		std::cout << RESET << bapt2 << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e) {
-		std::cout << e.what() << std::endl;
+	catch (std::exception &e) {
+		std::cout << RESET << e.what() << std::endl;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:07:55 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 14:03:43 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 11:23:46 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Intern.hpp"
+#include <cstdlib>
 
 void	testIntern(void)
 {

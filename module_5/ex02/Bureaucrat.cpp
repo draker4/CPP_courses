@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:39:20 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/01 12:26:18 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 11:21:59 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << RED_F << "Default Bureaucrat destructor called" << std::endl;
+	std::cout << RED_F << "Default Bureaucrat destructor called" << RESET << std::endl;
 }
 
 // constructors

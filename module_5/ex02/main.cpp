@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:07:55 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 14:03:24 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/06 11:21:25 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include <cstdlib>
 
 void	testOkSigned(void)
 {
