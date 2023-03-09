@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:50:08 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 17:45:24 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/09 10:32:41 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(void)
 	copy = second;
 	std::cout << std::endl;
 	try {
-		std::cout << RESET << RED_B << "fourth of copy array = " << second[4] << RESET << std::endl;
+		std::cout << RESET << RED_B << "fourteenth of copy array = " << RESET << second[14] << std::endl;
 	}
 	catch (std::exception &e) {
 		std::cout << "error occured because : " << e.what() << std::endl;
