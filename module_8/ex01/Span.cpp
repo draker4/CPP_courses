@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 10:35:04 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/09 12:14:14 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/09 12:47:42 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ void	Span::addNumber(int n)
 	_vec.push_back(n);
 }
 
+void	Span::addNumber(std::vector<int>::iterator it_begin, std::vector<int>::iterator it_end)
+{
+	for (std::vector<int>::iterator it = it_begin; it != it_end; it++)
+		addNumber(*it);
+}
+
 void	Span::printList(std::ostream &o) const
 {
 	for (std::vector<int>::const_iterator	it = _vec.begin(); it != _vec.end(); it++)
@@ -79,12 +85,42 @@ void	Span::printList(std::ostream &o) const
 
 int	Span::shortestSpan(void) const
 {
-	int	min;
-	int	max;
+	std::vector<int>::const_iterator	it = _vec.begin();
+	int									min;
 
 	if (_vec.size() <= 1)
 		throw SizeTooLow();
-	
+	min = abs(*(it + 1) - *it);
+	for (it = _vec.begin(); it != _vec.end(); it++)
+	{
+		for (std::vector<int>::const_iterator it2 = it; it2 != _vec.end(); it2++)
+		{
+			if (it2 != it)
+				if (abs(*it2 - *it) < min)
+					min = abs(*it2 - *it);
+		}
+	}
+	return min;
+}
+
+int	Span::longestSpan(void) const
+{
+	std::vector<int>::const_iterator	it = _vec.begin();
+	int									min;
+	int									max;
+
+	if (_vec.size() <= 1)
+		throw SizeTooLow();
+	min = *it;
+	max = *it;
+	for (it = _vec.begin(); it != _vec.end(); it++)
+	{
+		if (*it < min)
+			min = *it;
+		if (*it > max)
+			max = *it;
+	}
+	return (max - min);
 }
 
 // non member function

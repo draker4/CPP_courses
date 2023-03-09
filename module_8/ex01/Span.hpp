@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 10:35:25 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/09 12:14:25 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/09 12:46:27 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <vector>
+# include <cstdlib>
 
 class	Span
 {
@@ -36,6 +37,7 @@ class	Span
 		unsigned int		getN(void) const;
 
 		void				addNumber(int n);
+		void				addNumber(std::vector<int>::iterator it_begin, std::vector<int>::iterator it_end);
 		void				printList(std::ostream &o) const;
 		int					shortestSpan(void) const;
 		int					longestSpan(void) const;
@@ -47,7 +49,7 @@ class	Span
 		
 		class	SizeTooLow : public std::exception {
 			public:
-				const char	*what() const throw() { return "Container is already full!"; }
+				const char	*what() const throw() { return "Container's size is too low!"; }
 		};
 
 };
