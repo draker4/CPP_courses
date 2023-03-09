@@ -6,12 +6,12 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:50:08 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 17:24:23 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/03 17:45:24 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.hpp"
-#include "Array.tpp"
+#include "Array.hpp"
 
 int	main(void)
 {
