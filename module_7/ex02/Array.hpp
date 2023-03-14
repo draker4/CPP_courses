@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:52:26 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/14 13:36:28 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/14 13:44:29 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ class	Array
 		}
 		
 		unsigned int	size(void) const {
-			return ;
+			return _size;
 		}
 		
 		class	OutOfBounds : public std::exception {
@@ -73,7 +73,7 @@ class	Array
 			public:
 			
 				OutOfBounds(unsigned int idx) {
-					sule std::ostringstream o;
+					std::ostringstream o;
 					o << "Index " << idx << " out of bounds";
 					_str = o.str();
 				}
