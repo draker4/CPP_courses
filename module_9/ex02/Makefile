@@ -6,8 +6,8 @@
 
 # ---  Final Executable  --- #
 
-NAME			=	RPN
-DEBUG			=	RPN_debug
+NAME			=	PmergeMe
+DEBUG			=	PmergeMe_debug
 
 # ----------  Directories  ----------- #
 
@@ -20,7 +20,7 @@ DIR_OBJS_D		=	.build_debug/
 
 HEAD			=	
 
-SRCS			=	main.cpp	RPN.cpp
+SRCS			=	main.cpp	PmergeMe.cpp
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}
