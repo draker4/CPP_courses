@@ -6,14 +6,13 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:59:57 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/14 16:26:53 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/14 20:28:07 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <fstream>
 #include <string>
-#include <vector>
 #include "btc.hpp"
 
 int	main(int argc, char **argv)
@@ -55,7 +54,14 @@ int	main(int argc, char **argv)
 	// read input file
 	std::string	line;
 	while (std::getline(ifs_input, line, '\n'))
-		btc(line, vec);
+	{
+		try {
+			btc(line, vec);
+		}
+		catch (std::exception	&e) {
+			std::cout << CYAN_F << e.what() << std::endl;
+		}
+	}
 	ifs_input.close();
 	return 0;
 }

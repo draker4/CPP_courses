@@ -6,13 +6,43 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:42:53 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/14 16:53:47 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/14 20:36:29 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <vector>
+#include <exception>
+#include <cstdlib>
 
-static double	getExchangeRate(std::string date, std::vector<BitcoinExchange> vec)
+class	BadInput : public std::exception
+{
+	private:
+		std::string	_str;
+	
+	public:
+		BadInput(std::string s) {
+			std::ostringstream	o;
+			o << "Error: bad input => " << s;
+			_str = o.str();
+		}
+		~BadInput(void) throw() {};
+		virtual const char	*what() const throw() { return _str.c_str(); }
+};
+
+class	NegNumber : public std::exception
+{
+	public:
+		virtual const char	*what() const throw() { return "Error: not a positive number."; }
+};
+
+class	TooLarge : public std::exception
+{
+	public:
+		virtual const char	*what() const throw() { return "Error: too large a number."; }
+};
+
+static double	getExchangeRate(std::string s, std::string date, std::vector<BitcoinExchange> vec)
 {
 	double				year;
 	double				month;
@@ -21,12 +51,12 @@ static double	getExchangeRate(std::string date, std::vector<BitcoinExchange> vec
 	std::stringstream	ss(date);
 
 	if (date.find_first_not_of("0123456789- ") != std::string::npos)
-		return -1;
+		throw BadInput(s);
 	if (date.find("--") != std::string::npos || date[date.length() - 1] == '-')
-		return -1;
+		throw BadInput(s);
 	ss >> year >> dash >> month >> dash >> day;
 	if (year < 2009 || year > 2022 || month <= 0 || month > 12 || day <= 0 || day > 31)
-		return -1;
+		throw BadInput(s);
 	for (std::vector<BitcoinExchange>::const_iterator it = vec.begin(); it != vec.end(); it++)
 	{
 		if (year < it->getYear() || (year == it->getYear() && month < it->getMonth()) || (year == it->getYear() && month == it->getMonth() && day < it->getDay()))
@@ -40,6 +70,21 @@ static double	getExchangeRate(std::string date, std::vector<BitcoinExchange> vec
 	return (vec.end() - 1)->getExchangeRate();
 }
 
+static double	getValue(std::string s, std::string value)
+{
+	if (value.find_first_not_of("-0123456789. ") != std::string::npos || value.find_first_of("-") != value.find_last_of("-"))
+		throw BadInput(s);
+	if (value.find_first_of("-") != std::string::npos && value[1] != '-')
+		throw BadInput(s);
+	else if (value.find_first_of("-") != std::string::npos)
+		throw NegNumber();
+
+	double	val = strtod(value.c_str(), NULL);
+	if (errno == ERANGE || val > 1000)
+		throw TooLarge();
+	return val;
+}
+
 void	btc(std::string s, std::vector<BitcoinExchange> vec)
 {
 	std::string	date;
@@ -50,18 +95,10 @@ void	btc(std::string s, std::vector<BitcoinExchange> vec)
 		return ;
 	std::string::size_type	pos = s.find_first_of("|");
 	if (pos == std::string::npos || pos != s.find_last_of("|") || s[0] == '|' || s[s.length() - 1] == '|')
-	{
-		std::cout << CYAN_F << "Error: bad input => " << s << RESET << std::endl;
-		return ;
-	}
-	else
-		date = s.substr(0, pos);
-	exchange_rate = getExchangeRate(date, vec);
-	if (exchange_rate == -1)
-	{
-		std::cout << CYAN_F << "Error: bad input => " << s << RESET << std::endl;
-		return ;
-	}
-	//value
-	std::cout << CYAN_F << date << " " << exchange_rate << RESET << std::endl;
+		throw BadInput(s);
+	date = s.substr(0, pos);
+	exchange_rate = getExchangeRate(s, date, vec);
+	value = getValue(s, s.substr(pos + 1, s.length() - pos));
+	
+	std::cout << CYAN_F << date << "=> " << value << " = " << value * exchange_rate << RESET << std::endl;
 }
