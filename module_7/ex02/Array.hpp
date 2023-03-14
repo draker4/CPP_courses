@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.tpp                                          :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:52:26 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/03 17:25:15 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/14 13:36:28 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class	Array
 			std::cout << GREEN_F << "Unsigned int Array constructor" << RESET << std::endl;
 		}
 
-		Array(const Array &rhs) {
+		Array(const Array &rhs) : _size(rhs._size), _array(new T[rhs._size]) {
 			*this = rhs;
 			std::cout << GREEN_F << "Copy Array constructor" << std::endl;
 		}
@@ -44,7 +44,8 @@ class	Array
 		}
 		
 		Array	&operator=(const Array &rhs) {
-			delete [] _array;
+			if (_array)
+				delete [] _array;
 			_size = rhs._size;
 			_array = new T[rhs._size];
 			for (unsigned int i = 0; i < rhs._size; i++)
@@ -60,7 +61,7 @@ class	Array
 		}
 		
 		unsigned int	size(void) const {
-			return _size;
+			return ;
 		}
 		
 		class	OutOfBounds : public std::exception {
@@ -72,7 +73,7 @@ class	Array
 			public:
 			
 				OutOfBounds(unsigned int idx) {
-					std::ostringstream o;
+					sule std::ostringstream o;
 					o << "Index " << idx << " out of bounds";
 					_str = o.str();
 				}
