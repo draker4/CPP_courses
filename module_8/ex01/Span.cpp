@@ -6,12 +6,13 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 10:35:04 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/09 12:47:42 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/15 16:55:52 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include "colors.hpp"
+#include <algorithm>
 
 // destructor
 
@@ -83,27 +84,24 @@ void	Span::printList(std::ostream &o) const
 	}
 }
 
-int	Span::shortestSpan(void) const
+int	Span::shortestSpan(void)
 {
 	std::vector<int>::const_iterator	it = _vec.begin();
 	int									min;
 
 	if (_vec.size() <= 1)
 		throw SizeTooLow();
+	sort(_vec.begin(), _vec.end());
 	min = abs(*(it + 1) - *it);
 	for (it = _vec.begin(); it != _vec.end(); it++)
 	{
-		for (std::vector<int>::const_iterator it2 = it; it2 != _vec.end(); it2++)
-		{
-			if (it2 != it)
-				if (abs(*it2 - *it) < min)
-					min = abs(*it2 - *it);
-		}
+		if ((it + 1) != _vec.end() && abs(*(it + 1) - *it) < min)
+			min = abs(*(it + 1) - *it);
 	}
 	return min;
 }
 
-int	Span::longestSpan(void) const
+int	Span::longestSpan(void)
 {
 	std::vector<int>::const_iterator	it = _vec.begin();
 	int									min;

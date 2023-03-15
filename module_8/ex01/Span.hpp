@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 10:35:25 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/09 12:46:27 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/15 16:55:49 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ class	Span
 		void				addNumber(int n);
 		void				addNumber(std::vector<int>::iterator it_begin, std::vector<int>::iterator it_end);
 		void				printList(std::ostream &o) const;
-		int					shortestSpan(void) const;
-		int					longestSpan(void) const;
+		int					shortestSpan(void);
+		int					longestSpan(void);
 		
 		class	ContainerFull : public std::exception {
 			public:

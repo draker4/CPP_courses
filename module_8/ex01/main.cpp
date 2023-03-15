@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 10:34:50 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/09 13:00:05 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/15 16:59:03 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	main(void)
 		std::cout << YELLOW_F << "Second test" << RESET << std::endl;
 		std::cout << std::endl;
 		
-		Span	test1(10000);
+		Span	test1(100000);
 		
 		try {
 			
-			for (int i = 0; i < 10000; i++)
+			for (int i = 0; i < 100000; i++)
 				test1.addNumber(i);
 				
 			std::cout << std::endl;
@@ -91,8 +91,8 @@ int	main(void)
 		std::cout << YELLOW_F << "AddNumber range test" << RESET << std::endl;
 		std::cout << std::endl;
 		
-		Span				test1(10001);
-		std::vector<int>	vec(10000, 1);
+		Span				test1(100001);
+		std::vector<int>	vec(100000, 1);
 		
 		vec.push_back(200);
 		
@@ -108,6 +108,5 @@ int	main(void)
 		catch (std::exception &e) {
 			std::cout << "error because : " << e.what() << std::endl;
 		}
-		// std::cout << test1 << std::endl;
 	}
 }

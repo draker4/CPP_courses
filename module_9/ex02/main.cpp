@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:37:10 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/14 22:09:47 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/15 16:42:29 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #include <cerrno>
 #include <climits>
 #include <cstdlib>
+#include <ctime>
 
 int	main(int argc, char **argv)
 {
 	std::map<int, int>	map;
 	std::deque<int>		deque;
 
-	if (argc < 1)
+	if (argc == 1)
 	{
 		std::cout << YELLOW_B << "Error" << RESET << std::endl;
 	}
@@ -37,10 +38,25 @@ int	main(int argc, char **argv)
 			std::cout << YELLOW_B << "Error" << RESET << std::endl;
 			return 1;
 		}
-		map[i] = nb;
+		map[i - 1] = nb;
 		deque.push_back(nb);
 	}
 	PmergeMe	test_map(map);
 	PmergeMe	test_deque(deque);
+
+	std::cout << "Before : ";
+	test_map.print_init();
+	
+	std::cout << "After :  ";
+	test_map.print_sort();
+	
+	std::cout << "Time to process a range of " << map.size() << " elements with std::map<int, int> : ";
+	test_map.print_time();
+	std::cout << " nano_sec." << std::endl;
+	
+	std::cout << "Time to process a range of " << deque.size() << " elements with std::deque<int>    : ";
+	test_deque.print_time();
+	std::cout << " nano_sec." << std::endl;
+
 	return 0;
 }

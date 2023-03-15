@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:20:26 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/14 22:04:12 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/15 16:35:19 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ class	PmergeMe
 		std::deque<int>		_deque;
 		std::deque<int>		_deque_origin;
 		
+		void				mergeSortMap(std::map<int, int>::iterator begin, std::map<int, int>::iterator end);
+		void				mergeMap(std::map<int, int>::iterator left, std::map<int, int>::iterator med, std::map<int, int>::iterator right);
+		void				mergeSortDeque(std::deque<int>::iterator begin, std::deque<int>::iterator end);
+		void				mergeDeque(std::deque<int>::iterator left, std::deque<int>::iterator med, std::deque<int>::iterator right);
+	
 	public:
 
 		PmergeMe(std::map<int, int> map);
@@ -38,7 +43,11 @@ class	PmergeMe
 		PmergeMe(const PmergeMe &rhs);
 		~PmergeMe(void);
 
-		PmergeMe	&operator=(const PmergeMe &rhs);
+		PmergeMe			&operator=(const PmergeMe &rhs);
+		
+		void				print_init(void) const;
+		void				print_sort(void) const;
+		void				print_time(void) const;
 };
 
 #endif
