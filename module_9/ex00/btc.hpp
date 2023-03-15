@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:42:53 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/14 20:36:29 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/15 17:07:56 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ static double	getExchangeRate(std::string s, std::string date, std::vector<Bitco
 
 static double	getValue(std::string s, std::string value)
 {
-	if (value.find_first_not_of("-0123456789. ") != std::string::npos || value.find_first_of("-") != value.find_last_of("-"))
+	if (value.find_first_not_of("-0123456789., ") != std::string::npos || value.find_first_of("-") != value.find_last_of("-") || value.find_first_of(",") != value.find_last_of(","))
 		throw BadInput(s);
+	if (value.find_first_of(",") != std::string::npos)
+		value.replace(value.find_first_of(","), 1, ".");
 	if (value.find_first_of("-") != std::string::npos && value[1] != '-')
 		throw BadInput(s);
 	else if (value.find_first_of("-") != std::string::npos)
