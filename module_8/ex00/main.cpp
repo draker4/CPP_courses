@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:22:23 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/06 13:55:41 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/15 18:27:57 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	main(void)
 	catch (std::exception &e) {
 		std::cout << e.what();
 	}
-	
-	std::cout << std::endl;
 
 	try {
 		int a = easyfind(v, 12);
