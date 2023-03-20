@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:37:10 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/15 18:04:18 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/20 16:02:53 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 	{
 		std::cout << YELLOW_B << "Error" << RESET << std::endl;
+		return 0;
 	}
 	for (int i = 1; i < argc; i++)
 	{
