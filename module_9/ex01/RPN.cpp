@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 20:41:44 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/15 18:31:10 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/21 15:21:50 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ RPN::RPN(std::string s)
 			}
 		}
 	}
+	if (_list.size() != 1)
+		throw BadInput();
 	std::cout << CYAN_F << "Default RPN constructor" << RESET << std::endl;
 }
 
@@ -80,7 +82,7 @@ RPN	&RPN::operator=(const RPN &rhs)
 
 void	RPN::addition(void)
 {
-	if (_list.size() < 2)
+	if (_list.size() != 2)
 		throw NotEnoughNumbers();
 	
 	double	check;
@@ -98,7 +100,7 @@ void	RPN::addition(void)
 
 void	RPN::substract(void)
 {
-	if (_list.size() < 2)
+	if (_list.size() != 2)
 		throw NotEnoughNumbers();
 	
 	double	check;
@@ -115,7 +117,7 @@ void	RPN::substract(void)
 
 void	RPN::multiply(void)
 {
-	if (_list.size() < 2)
+	if (_list.size() != 2)
 		throw NotEnoughNumbers();
 	
 	double	check;
@@ -132,7 +134,7 @@ void	RPN::multiply(void)
 
 void	RPN::divide(void)
 {
-	if (_list.size() < 2)
+	if (_list.size() != 2)
 		throw NotEnoughNumbers();
 	
 	double	check;

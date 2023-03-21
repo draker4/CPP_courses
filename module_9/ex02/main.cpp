@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:37:10 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/20 16:02:53 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/21 16:28:35 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,22 @@ int	main(int argc, char **argv)
 		{
 			std::cout << YELLOW_B << "Error" << RESET << std::endl;
 			return 1;
+		}
+		for (std::map<int, int>::iterator it = map.begin(); it != map.end(); it ++)
+		{
+			if (it->second == (int)nb)
+			{
+				std::cout << YELLOW_B << "Error" << RESET << std::endl;
+				return 1;
+			}
+		}
+		for (std::deque<int>::iterator it = deque.begin(); it != deque.end(); it ++)
+		{
+			if (*it == (int)nb)
+			{
+				std::cout << YELLOW_B << "Error" << RESET << std::endl;
+				return 1;
+			}
 		}
 		map[i - 1] = nb;
 		deque.push_back(nb);

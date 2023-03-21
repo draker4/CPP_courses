@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 20:41:41 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/15 17:56:30 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/21 15:22:13 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ class	RPN
 		class	IntOutOfRange : public std::exception {
 			public:
 				 virtual const char	*what() const throw() { return "Result not in integer range."; }
+		};
+		
+		class	BadInput : public std::exception {
+			public:
+				 virtual const char	*what() const throw() { return "Bad input."; }
 		};
 };
 

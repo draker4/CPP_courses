@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:20:55 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/15 16:38:24 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/21 16:27:06 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,33 @@ PmergeMe::PmergeMe(std::deque<int> deque) : _time(0), _container(2)
 	// std::cout << RED_F << "Map PmergeMe constructor called" << RESET << std::endl;
 }
 
+int	PmergeMe::prev_value(std::map<int, int>::iterator it)
+{
+	if (it != _map.begin())
+	{
+		--it;
+		return it->second;
+	}
+	return 0;
+}
+
+void	PmergeMe::insertionMap(std::map<int, int>::iterator begin, std::map<int, int>::iterator end)
+{
+	for (std::map<int, int>::iterator it = begin; it != end; it++)
+	{
+		++it;
+		int	tmp = it->second;
+		std::map<int, int>::iterator it2 = it;
+		--it;
+		while (it2 != begin && prev_value(it2) > tmp)
+		{
+			it2->second = prev_value(it2);
+			it2--;
+		}
+		it2->second = tmp;
+	}
+}
+
 void	PmergeMe::mergeSortMap(std::map<int, int>::iterator begin, std::map<int, int>::iterator end)
 {
 	if (begin->first >= end->first)
@@ -131,10 +158,29 @@ void	PmergeMe::mergeMap(std::map<int, int>::iterator left, std::map<int, int>::i
 	}
 }
 
+void	PmergeMe::insertionDeque(std::deque<int>::iterator begin, std::deque<int>::iterator end)
+{
+	for (std::deque<int>::iterator it = begin; it != end; it++)
+	{
+		int	tmp = *(it + 1);
+		std::deque<int>::iterator it2 = it + 1;
+		while (it2 != begin && *(it2 - 1) > tmp)
+		{
+			*it2 = *(it2 - 1);
+			it2--;
+		}
+		*it2 = tmp;
+	}
+}
+
 void	PmergeMe::mergeSortDeque(std::deque<int>::iterator begin, std::deque<int>::iterator end)
 {
-	if (begin >= end)
+	if (end - begin <= (long int) _deque.size() / 10)
+	{
+		insertionDeque(begin, end);
 		return ;
+	}
+		
 	std::deque<int>::iterator	med = begin + (end - begin) / 2;
 	mergeSortDeque(begin, med);
 	mergeSortDeque(med + 1, end);

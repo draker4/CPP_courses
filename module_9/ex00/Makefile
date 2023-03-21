@@ -20,7 +20,7 @@ DIR_OBJS_D		=	.build_debug/
 
 HEAD			=	
 
-SRCS			=	main.cpp	BitcoinExchange.cpp
+SRCS			=	main.cpp	BitcoinExchange.cpp		btc.cpp
 
 OBJS			=	${SRCS:%.cpp=${DIR_OBJS}%.o}
 OBJS_D			=	${SRCS:%.cpp=${DIR_OBJS_D}%.o}

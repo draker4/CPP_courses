@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:20:26 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/15 16:35:19 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/21 16:26:56 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,13 @@ class	PmergeMe
 		std::deque<int>		_deque_origin;
 		
 		void				mergeSortMap(std::map<int, int>::iterator begin, std::map<int, int>::iterator end);
-		void				mergeMap(std::map<int, int>::iterator left, std::map<int, int>::iterator med, std::map<int, int>::iterator right);
 		void				mergeSortDeque(std::deque<int>::iterator begin, std::deque<int>::iterator end);
+		void				mergeMap(std::map<int, int>::iterator left, std::map<int, int>::iterator med, std::map<int, int>::iterator right);
 		void				mergeDeque(std::deque<int>::iterator left, std::deque<int>::iterator med, std::deque<int>::iterator right);
-	
+		void				insertionDeque(std::deque<int>::iterator begin, std::deque<int>::iterator end);
+		void				insertionMap(std::map<int, int>::iterator begin, std::map<int, int>::iterator end);
+		int					prev_value(std::map<int, int>::iterator it);
+
 	public:
 
 		PmergeMe(std::map<int, int> map);

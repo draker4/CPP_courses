@@ -6,25 +6,27 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 13:59:57 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/14 20:28:07 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/21 15:28:20 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <fstream>
 #include <string>
-#include "btc.hpp"
+#include <vector>
+
+void	btc(std::string s, std::vector<BitcoinExchange> vec);
 
 int	main(int argc, char **argv)
 {
-	std::vector<BitcoinExchange>	vec;
-
 	// check number of args
 	if (argc != 2)
 	{
-		std::cout << MAGENTA_B << BOLD << "Error: could not open file." << RESET << std::endl;
+		std::cout << MAGENTA_B << BOLD << "Error: enter ONE file name." << RESET << std::endl;
 		return 1;
 	}
+	
+	std::vector<BitcoinExchange>	vec;
 	
 	// stock database in BitcoinExchange
 	std::string		line_data;
@@ -63,5 +65,6 @@ int	main(int argc, char **argv)
 		}
 	}
 	ifs_input.close();
+
 	return 0;
 }

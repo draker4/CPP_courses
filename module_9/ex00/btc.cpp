@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btc.hpp                                            :+:      :+:    :+:   */
+/*   btc.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 15:42:53 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/15 17:07:56 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/21 15:17:02 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <vector>
 #include <exception>
+#include <cerrno>
 #include <cstdlib>
 
 class	BadInput : public std::exception
@@ -72,7 +73,7 @@ static double	getExchangeRate(std::string s, std::string date, std::vector<Bitco
 
 static double	getValue(std::string s, std::string value)
 {
-	if (value.find_first_not_of("-0123456789., ") != std::string::npos || value.find_first_of("-") != value.find_last_of("-") || value.find_first_of(",") != value.find_last_of(","))
+	if (value.find_first_not_of("-0123456789., ") != std::string::npos || value.find_first_of("-") != value.find_last_of("-") || value.find_first_of(",") != value.find_last_of(",") || value.find_first_of(".") != value.find_last_of("."))
 		throw BadInput(s);
 	if (value.find_first_of(",") != std::string::npos)
 		value.replace(value.find_first_of(","), 1, ".");
