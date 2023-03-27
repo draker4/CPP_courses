@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:20:55 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/21 16:27:06 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/27 12:57:22 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ PmergeMe::PmergeMe(std::map<int,int> map) : _time(0), _container(1)
 		_map_origin[it->first] = it->second;
 		end_it = it;
 	}
-	
 	struct timeval	time_start;
 	struct timeval	time_end;
 	gettimeofday(&time_start, NULL);
@@ -80,35 +79,46 @@ PmergeMe::PmergeMe(std::deque<int> deque) : _time(0), _container(2)
 
 int	PmergeMe::prev_value(std::map<int, int>::iterator it)
 {
-	if (it != _map.begin())
+	int	tmp;
+
+	if (it->second != _map.begin()->second)
 	{
 		--it;
-		return it->second;
+		tmp = it->second;
+		++it;
+		return tmp;
 	}
 	return 0;
 }
 
 void	PmergeMe::insertionMap(std::map<int, int>::iterator begin, std::map<int, int>::iterator end)
 {
-	for (std::map<int, int>::iterator it = begin; it != end; it++)
+	int	size = end->first - begin->first;
+	std::map<int, int>::iterator it = begin;
+
+	for (int i = 0; i < size; i++)
 	{
 		++it;
 		int	tmp = it->second;
 		std::map<int, int>::iterator it2 = it;
 		--it;
-		while (it2 != begin && prev_value(it2) > tmp)
+		while (it2->second != begin->second && prev_value(it2) > tmp)
 		{
 			it2->second = prev_value(it2);
 			it2--;
 		}
 		it2->second = tmp;
+		++it;
 	}
 }
 
 void	PmergeMe::mergeSortMap(std::map<int, int>::iterator begin, std::map<int, int>::iterator end)
 {
-	if (begin->first >= end->first)
+	if (end->first - begin->first <= (long int) _map.size() / 10)
+	{
+		insertionMap(begin, end);
 		return ;
+	}
 	std::map<int, int>::iterator	med = _map.find(begin->first + (end->first - begin->first) / 2);
 	mergeSortMap(begin, med);
 	mergeSortMap(++med, end);

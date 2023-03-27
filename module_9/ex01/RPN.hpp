@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 20:41:41 by bperriol          #+#    #+#             */
-/*   Updated: 2023/03/21 15:22:13 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2023/03/27 10:30:45 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class	RPN
 		
 		class	NotEnoughNumbers : public std::exception {
 			public:
-				 virtual const char	*what() const throw() { return "Not enough numbers entered before the operation."; }
+				 virtual const char	*what() const throw() { return "Not enough or too many numbers entered before the operation."; }
 		};
 		
 		class	DivisionByZero : public std::exception {
